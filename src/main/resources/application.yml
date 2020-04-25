@@ -25,10 +25,10 @@ spring:
     type: redis
   datasource:
     continue-on-error: true
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:slc}?reconnect=true
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    driver-class-name: org.h2.Driver
+    url: h2:mem:testdb
+    username: ${DB_USER:sa}
+    password: ${DB_PASSWORD:sa}
     tomcat:
       test-on-borrow: true
       test-on-connect: true
@@ -37,3 +37,4 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+      database-platform: org.hibernate.dialect.H2Dialect
