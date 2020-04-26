@@ -1,5 +1,7 @@
 package br.com.slc.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -20,6 +22,7 @@ public class SisMsg extends AbstractModel {
     return slc;
   }
 
+  @JsonProperty("SLC0001")
   public void setSlc(Slc slc) {
     this.slc = slc;
   }
@@ -27,7 +30,6 @@ public class SisMsg extends AbstractModel {
   @Override
   public String toString() {
     return "{\"SisMsg\":"
-        + super.toString()
         + ", \"slc\":" + slc
         + "}";
   }

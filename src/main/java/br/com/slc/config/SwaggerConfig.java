@@ -36,9 +36,10 @@ public class SwaggerConfig {
 
   @Bean
   public Docket customImplementation(@Value("${documentation.info.title}") String title,
-      @Value("${documentation.info.version}") String version,
+      @Value("${documentation.version}") String version,
       @Value("${documentation.info.description}") String description,
       @Value("${documentation.base-package}") String basePackage) {
+
     return new Docket(DocumentationType.SWAGGER_2)
         .select()
         .apis(RequestHandlerSelectors.basePackage(basePackage))
@@ -61,6 +62,7 @@ public class SwaggerConfig {
   }
 
   private List<ResponseMessage> getResponseMessages() {
+
     return newArrayList(
         new ResponseMessageBuilder()
             .code(200).message("Request performed successfully.").build(),
@@ -73,10 +75,11 @@ public class SwaggerConfig {
   }
 
   private ResponseMessage getErrorMessage(Integer code, String message) {
+
     return new ResponseMessageBuilder()
         .code(code)
         .message(message)
-        .responseModel(new ModelRef("Api Error"))
+        .responseModel(new ModelRef("ApiError"))
         .build();
   }
 

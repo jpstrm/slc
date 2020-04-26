@@ -1,8 +1,11 @@
 package br.com.slc.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import java.math.BigInteger;
 
 /**
  * @author João Paulo Santarém
@@ -14,12 +17,12 @@ public class Bcmsg extends AbstractModel {
 
   private Long identdDestinatario;
 
-  @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+  @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
   private GrupoSeq grupoSeqs;
 
   private String domSist;
 
-  private Double nUOp;
+  private BigInteger nUOp;
 
   public Bcmsg() {
   }
@@ -28,6 +31,7 @@ public class Bcmsg extends AbstractModel {
     return identdEmissor;
   }
 
+  @JsonProperty("IdentdEmissor")
   public void setIdentdEmissor(Long identdEmissor) {
     this.identdEmissor = identdEmissor;
   }
@@ -36,6 +40,7 @@ public class Bcmsg extends AbstractModel {
     return identdDestinatario;
   }
 
+  @JsonProperty("IdentdDestinatario")
   public void setIdentdDestinatario(Long identdDestinatario) {
     this.identdDestinatario = identdDestinatario;
   }
@@ -44,6 +49,7 @@ public class Bcmsg extends AbstractModel {
     return grupoSeqs;
   }
 
+  @JsonProperty("Grupo_Seq")
   public void setGrupoSeqs(GrupoSeq grupoSeqs) {
     this.grupoSeqs = grupoSeqs;
   }
@@ -52,28 +58,29 @@ public class Bcmsg extends AbstractModel {
     return domSist;
   }
 
+  @JsonProperty("DomSist")
   public void setDomSist(String domSist) {
     this.domSist = domSist;
   }
 
-  public Double getnUOp() {
+  public BigInteger getnUOp() {
     return nUOp;
   }
 
-  public void setnUOp(Double nUOp) {
+  @JsonProperty("NUOp")
+  public void setnUOp(BigInteger nUOp) {
     this.nUOp = nUOp;
   }
 
   @Override
   public String toString() {
-    return "{\"Bcmsg\":"
-        + super.toString()
-        + ", \"domSist\":\"" + domSist + "\""
+    return "{\"Bcmsg\":{"
+        + "\"identdEmissor\":\"" + identdEmissor + "\""
         + ", \"identdDestinatario\":\"" + identdDestinatario + "\""
-        + ", \"nUOp\":\"" + nUOp + "\""
-        + ", \"identdEmissor\":\"" + identdEmissor + "\""
         + ", \"grupoSeqs\":" + grupoSeqs
-        + "}";
+        + ", \"domSist\":\"" + domSist + "\""
+        + ", \"nUOp\":\"" + nUOp + "\""
+        + "}}";
   }
 
 }

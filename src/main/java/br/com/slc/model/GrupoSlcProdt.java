@@ -1,5 +1,8 @@
 package br.com.slc.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -23,6 +26,7 @@ public class GrupoSlcProdt extends AbstractModel {
     return codProdt;
   }
 
+  @JsonProperty("CodProdt")
   public void setCodProdt(String codProdt) {
     this.codProdt = codProdt;
   }
@@ -31,6 +35,8 @@ public class GrupoSlcProdt extends AbstractModel {
     return grupoSlcLiquidProdts;
   }
 
+  @JsonProperty("Grupo_SLC0001_LiquidProdt")
+  @JacksonXmlElementWrapper(useWrapping = false)
   public void setGrupoSlcLiquidProdts(List<GrupoSlcLiquidProdt> grupoSlcLiquidProdts) {
     this.grupoSlcLiquidProdts = grupoSlcLiquidProdts;
   }
@@ -38,7 +44,6 @@ public class GrupoSlcProdt extends AbstractModel {
   @Override
   public String toString() {
     return "{\"GrupoSlcProdt\":"
-        + super.toString()
         + ", \"codProdt\":\"" + codProdt + "\""
         + ", \"grupoSlcLiquidProdts\":" + grupoSlcLiquidProdts
         + "}";

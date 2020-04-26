@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public class AbstractException extends RuntimeException implements Serializable {
 
-  private static final long serialVersionUID = -5603660003741702875L;
+  private static final long serialVersionUID = -6438261965899154186L;
   private HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
 
   public AbstractException(final String msg) {

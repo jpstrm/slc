@@ -1,5 +1,7 @@
 package br.com.slc.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Entity;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -10,7 +12,7 @@ import java.math.BigDecimal;
 @Entity
 public class GrupoSlcLiquidProdt extends AbstractModel {
 
-  private Double identdLinhaBilat;
+  private String identdLinhaBilat;
 
   private char tpDebCred;
 
@@ -35,11 +37,12 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
   public GrupoSlcLiquidProdt() {
   }
 
-  public Double getIdentdLinhaBilat() {
+  public String getIdentdLinhaBilat() {
     return identdLinhaBilat;
   }
 
-  public void setIdentdLinhaBilat(Double identdLinhaBilat) {
+  @JsonProperty("IdentdLinhaBilat")
+  public void setIdentdLinhaBilat(String identdLinhaBilat) {
     this.identdLinhaBilat = identdLinhaBilat;
   }
 
@@ -47,6 +50,7 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
     return tpDebCred;
   }
 
+  @JsonProperty("TpDeb_Cred")
   public void setTpDebCred(char tpDebCred) {
     this.tpDebCred = tpDebCred;
   }
@@ -55,6 +59,7 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
     return ispbifcCredtd;
   }
 
+  @JsonProperty("ISPBIFCredtd")
   public void setIspbifcCredtd(Long ispbifcCredtd) {
     this.ispbifcCredtd = ispbifcCredtd;
   }
@@ -63,6 +68,7 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
     return ispbifDebtd;
   }
 
+  @JsonProperty("ISPBIFDebtd")
   public void setIspbifDebtd(Long ispbifDebtd) {
     this.ispbifDebtd = ispbifDebtd;
   }
@@ -71,6 +77,7 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
     return vlrLanc;
   }
 
+  @JsonProperty("VlrLanc")
   public void setVlrLanc(BigDecimal vlrLanc) {
     this.vlrLanc = vlrLanc;
   }
@@ -79,6 +86,7 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
     return cnpjNLiqdantDebtd;
   }
 
+  @JsonProperty("CNPJNLiqdantDebtd")
   public void setCnpjNLiqdantDebtd(Long cnpjNLiqdantDebtd) {
     this.cnpjNLiqdantDebtd = cnpjNLiqdantDebtd;
   }
@@ -87,6 +95,7 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
     return nomCliDebtd;
   }
 
+  @JsonProperty("NomCliDebtd")
   public void setNomCliDebtd(String nomCliDebtd) {
     this.nomCliDebtd = nomCliDebtd;
   }
@@ -95,6 +104,7 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
     return cnpjNCNPJNLiqdantCredtd;
   }
 
+  @JsonProperty("CNPJNLiqdantCredtd")
   public void setCnpjNCNPJNLiqdantCredtd(Long cnpjNCNPJNLiqdantCredtd) {
     this.cnpjNCNPJNLiqdantCredtd = cnpjNCNPJNLiqdantCredtd;
   }
@@ -103,6 +113,7 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
     return nomCliCredtd;
   }
 
+  @JsonProperty("NomCliCredtd")
   public void setNomCliCredtd(String nomCliCredtd) {
     this.nomCliCredtd = nomCliCredtd;
   }
@@ -111,6 +122,7 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
     return tpTranscSlc;
   }
 
+  @JsonProperty("TpTranscSLC")
   public void setTpTranscSlc(String tpTranscSlc) {
     this.tpTranscSlc = tpTranscSlc;
   }
@@ -118,7 +130,6 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
   @Override
   public String toString() {
     return "{\"GrupoSlcLiquidProdt\":"
-        + super.toString()
         + ", \"identdLinhaBilat\":\"" + identdLinhaBilat + "\""
         + ", \"tpDebCred\":\"" + tpDebCred + "\""
         + ", \"ispbifcCredtd\":\"" + ispbifcCredtd + "\""
