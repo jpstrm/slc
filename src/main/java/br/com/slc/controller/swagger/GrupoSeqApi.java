@@ -1,6 +1,6 @@
 package br.com.slc.controller.swagger;
 
-import br.com.slc.model.BcMsg;
+import br.com.slc.model.GrupoSeq;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -14,14 +14,14 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 /**
  * @author João Paulo Santarém
  */
-@Api(value = "BcMsg", tags = "BcMsg")
-public interface BcMsgApi {
+@Api(value = "GrupoSeq", tags = "GrupoSeq")
+public interface GrupoSeqApi {
 
-  @ApiOperation(value = "Listar BcMsgs",
-      notes = "Operação para listar todas as BcMsgs.",
+  @ApiOperation(value = "Listar GrupoSeqs",
+      notes = "Operação para listar todos os GrupoSeqs.",
       consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   @ApiResponses({
       @ApiResponse(code = 200, message = "Requisição realizada com sucesso.")})
-  ResponseEntity<List<BcMsg>> findAll();
+  ResponseEntity<List<GrupoSeq>> findAll();
 
 }

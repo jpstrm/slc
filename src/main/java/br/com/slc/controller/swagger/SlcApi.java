@@ -21,8 +21,7 @@ public interface SlcApi {
       notes = "Operação para listar todas as SLCs.",
       consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   @ApiResponses({
-      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.",
-          response = List.class)})
+      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.")})
   ResponseEntity<List<Slc>> findAll();
 
 }

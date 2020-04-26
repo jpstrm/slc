@@ -20,8 +20,7 @@ public interface DocUploadApi {
       notes = "Operação para realizar upload do arquivo SLC no formato XML.",
       consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   @ApiResponses({
-      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.",
-          response = Void.class)})
+      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.")})
   ResponseEntity<String> upload(@RequestParam MultipartFile file);
 
 }
