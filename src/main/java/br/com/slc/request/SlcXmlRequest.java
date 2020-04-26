@@ -1,6 +1,6 @@
 package br.com.slc.request;
 
-import br.com.slc.model.Bcmsg;
+import br.com.slc.model.BcMsg;
 import br.com.slc.model.SisMsg;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
@@ -11,19 +11,19 @@ import io.swagger.annotations.ApiModel;
 @ApiModel(description = "SLC XML request")
 public class SlcXmlRequest {
 
-  private Bcmsg bcmsg;
+  private BcMsg bcmsg;
 
   private SisMsg sisMsg;
 
   public SlcXmlRequest() {
   }
 
-  public Bcmsg getBcmsg() {
+  public BcMsg getBcmsg() {
     return bcmsg;
   }
 
   @JsonProperty("BCMSG")
-  public void setBcmsg(Bcmsg bcmsg) {
+  public void setBcmsg(BcMsg bcmsg) {
     this.bcmsg = bcmsg;
   }
 

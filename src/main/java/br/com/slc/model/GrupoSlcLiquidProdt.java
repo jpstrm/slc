@@ -2,9 +2,12 @@ package br.com.slc.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  * @author João Paulo Santarém
@@ -12,26 +15,43 @@ import java.math.BigDecimal;
 @Entity
 public class GrupoSlcLiquidProdt extends AbstractModel {
 
+  @NotBlank
+  @Column(nullable = false)
   private String identdLinhaBilat;
 
+  @NotNull
+  @Column(nullable = false, length = 1)
   private char tpDebCred;
 
+  @NotNull
+  @Column(nullable = false)
   private Long ispbifcCredtd;
 
+  @NotNull
+  @Column(nullable = false)
   private Long ispbifDebtd;
 
+  @NotNull
+  @Column(nullable = false)
   private BigDecimal vlrLanc;
 
-  @Size(max = 14)
+  @Column(nullable = false)
   private Long cnpjNLiqdantDebtd;
 
+  @NotBlank
+  @Column(nullable = false)
   private String nomCliDebtd;
 
-  @Size(max = 14)
+  @NotNull
+  @Column(nullable = false)
   private Long cnpjNCNPJNLiqdantCredtd;
 
+  @NotBlank
+  @Column(nullable = false)
   private String nomCliCredtd;
 
+  @NotBlank
+  @Column(nullable = false)
   private String tpTranscSlc;
 
   public GrupoSlcLiquidProdt() {
@@ -125,6 +145,30 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
   @JsonProperty("TpTranscSLC")
   public void setTpTranscSlc(String tpTranscSlc) {
     this.tpTranscSlc = tpTranscSlc;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof GrupoSlcLiquidProdt)) return false;
+    GrupoSlcLiquidProdt that = (GrupoSlcLiquidProdt) o;
+    return tpDebCred == that.tpDebCred &&
+        identdLinhaBilat.equals(that.identdLinhaBilat) &&
+        ispbifcCredtd.equals(that.ispbifcCredtd) &&
+        ispbifDebtd.equals(that.ispbifDebtd) &&
+        vlrLanc.equals(that.vlrLanc) &&
+        cnpjNLiqdantDebtd.equals(that.cnpjNLiqdantDebtd) &&
+        nomCliDebtd.equals(that.nomCliDebtd) &&
+        cnpjNCNPJNLiqdantCredtd.equals(that.cnpjNCNPJNLiqdantCredtd) &&
+        nomCliCredtd.equals(that.nomCliCredtd) &&
+        tpTranscSlc.equals(that.tpTranscSlc);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects
+        .hash(identdLinhaBilat, tpDebCred, ispbifcCredtd, ispbifDebtd, vlrLanc, cnpjNLiqdantDebtd, nomCliDebtd,
+            cnpjNCNPJNLiqdantCredtd, nomCliCredtd, tpTranscSlc);
   }
 
   @Override

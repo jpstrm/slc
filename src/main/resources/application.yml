@@ -26,7 +26,7 @@ spring:
   datasource:
     continue-on-error: true
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:slcdb
     username: ${DB_USER:sa}
     password: ${DB_PASSWORD:sa}
     tomcat:
@@ -36,5 +36,6 @@ spring:
       init-s-q-l: SELECT 1 FROM DUAL
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     database-platform: org.hibernate.dialect.H2Dialect
+  h2.console.enabled: true

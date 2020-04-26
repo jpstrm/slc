@@ -3,35 +3,46 @@ package br.com.slc.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import java.math.BigInteger;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 /**
  * @author João Paulo Santarém
  */
 @Entity
-public class Bcmsg extends AbstractModel {
+public class BcMsg extends AbstractModel {
 
+  @NotNull
+  @Column(nullable = false)
   private Long identdEmissor;
 
+  @NotNull
+  @Column(nullable = false)
   private Long identdDestinatario;
 
-  @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+  @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, optional = false)
   private GrupoSeq grupoSeqs;
 
+  @NotBlank
+  @Column(nullable = false)
   private String domSist;
 
-  private BigInteger nUOp;
+  @NotBlank
+  @Column(nullable = false)
+  private String nUOp;
 
-  public Bcmsg() {
+  public BcMsg() {
   }
 
   public Long getIdentdEmissor() {
     return identdEmissor;
   }
 
-  @JsonProperty("IdentdEmissor")
+  @JsonProperty(value = "IdentdEmissor")
   public void setIdentdEmissor(Long identdEmissor) {
     this.identdEmissor = identdEmissor;
   }
@@ -63,18 +74,35 @@ public class Bcmsg extends AbstractModel {
     this.domSist = domSist;
   }
 
-  public BigInteger getnUOp() {
+  public String getnUOp() {
     return nUOp;
   }
 
   @JsonProperty("NUOp")
-  public void setnUOp(BigInteger nUOp) {
+  public void setnUOp(String nUOp) {
     this.nUOp = nUOp;
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof BcMsg)) return false;
+    BcMsg bcMsg = (BcMsg) o;
+    return identdEmissor.equals(bcMsg.identdEmissor) &&
+        identdDestinatario.equals(bcMsg.identdDestinatario) &&
+        grupoSeqs.equals(bcMsg.grupoSeqs) &&
+        domSist.equals(bcMsg.domSist) &&
+        nUOp.equals(bcMsg.nUOp);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(identdEmissor, identdDestinatario, grupoSeqs, domSist, nUOp);
+  }
+
+  @Override
   public String toString() {
-    return "{\"Bcmsg\":{"
+    return "{\"BcMsg\":{"
         + "\"identdEmissor\":\"" + identdEmissor + "\""
         + ", \"identdDestinatario\":\"" + identdDestinatario + "\""
         + ", \"grupoSeqs\":" + grupoSeqs

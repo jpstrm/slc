@@ -2,7 +2,10 @@ package br.com.slc.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 /**
  * @author João Paulo Santarém
@@ -10,8 +13,12 @@ import javax.persistence.Entity;
 @Entity
 public class GrupoSeq extends AbstractModel {
 
+  @NotNull
+  @Column(nullable = false)
   private Long numSeq;
 
+  @NotNull
+  @Column(nullable = false, length = 1)
   private char indrCont;
 
   public GrupoSeq() {
@@ -33,6 +40,20 @@ public class GrupoSeq extends AbstractModel {
   @JsonProperty("IndrCont")
   public void setIndrCont(char indrCont) {
     this.indrCont = indrCont;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof GrupoSeq)) return false;
+    GrupoSeq grupoSeq = (GrupoSeq) o;
+    return indrCont == grupoSeq.indrCont &&
+        numSeq.equals(grupoSeq.numSeq);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(numSeq, indrCont);
   }
 
   @Override

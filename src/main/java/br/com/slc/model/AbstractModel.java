@@ -18,23 +18,26 @@ import java.time.LocalDateTime;
  */
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"id", "createdAt", "updatedAt"}, allowGetters = true)
+@JsonIgnoreProperties(value = {"id", "createdAt", "updatedAt"})
 public abstract class AbstractModel {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "created_at", nullable = false, updatable = false)
+  @Column(nullable = false, updatable = false)
   @CreatedDate
   private LocalDateTime createdAt;
 
-  @Column(name = "updated_at")
   @LastModifiedDate
   private LocalDateTime updatedAt;
 
   public Long getId() {
     return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public LocalDateTime getCreatedAt() {
