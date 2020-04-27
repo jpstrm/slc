@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,7 +17,9 @@ import java.util.Objects;
  * @author João Paulo Santarém
  */
 @Entity
-public class GrupoSlcProdt extends AbstractModel {
+public class GrupoSlcProdt extends AbstractModel implements Serializable {
+
+  final static long serialVersionUID = -7240252525039002957L;
 
   @NotBlank
   @Column(nullable = false)

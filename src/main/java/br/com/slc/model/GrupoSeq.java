@@ -5,13 +5,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * @author João Paulo Santarém
  */
 @Entity
-public class GrupoSeq extends AbstractModel {
+public class GrupoSeq extends AbstractModel implements Serializable {
+
+  final static long serialVersionUID = -2295676646834161116L;
 
   @NotNull
   @Column(nullable = false)

@@ -6,13 +6,16 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * @author João Paulo Santarém
  */
 @Entity
-public class SisMsg extends AbstractModel {
+public class SisMsg extends AbstractModel implements Serializable {
+
+  final static long serialVersionUID = 8262452880503654026L;
 
   @NotNull
   @OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
