@@ -20,9 +20,6 @@ public class DocUploadService {
   private Logger logger = LoggerFactory.getLogger(DocUploadService.class);
 
   @Autowired
-  private SlcRequestConverter slcRequestConverter;
-
-  @Autowired
   private BcMsgService bcMsgService;
 
   @Autowired
@@ -31,7 +28,7 @@ public class DocUploadService {
   public void upload(final MultipartFile multipartFile) {
 
     try {
-      SlcXmlRequest slcXmlRequest = slcRequestConverter.fromXmlFile(multipartFile);
+      SlcXmlRequest slcXmlRequest = SlcRequestConverter.fromXmlFile(multipartFile);
 
       bcMsgService.save(slcXmlRequest.getBcmsg());
       sisMsgService.save(slcXmlRequest.getSisMsg());

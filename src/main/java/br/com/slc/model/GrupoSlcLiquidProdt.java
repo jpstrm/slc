@@ -35,16 +35,17 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
   @Column(nullable = false)
   private BigDecimal vlrLanc;
 
+  @NotBlank
   @Column(nullable = false)
-  private Long cnpjNLiqdantDebtd;
+  private String cnpjNLiqdantDebtd;
 
   @NotBlank
   @Column(nullable = false)
   private String nomCliDebtd;
 
-  @NotNull
+  @NotBlank
   @Column(nullable = false)
-  private Long cnpjNCNPJNLiqdantCredtd;
+  private String cnpjNLiqdantCredtd;
 
   @NotBlank
   @Column(nullable = false)
@@ -102,12 +103,12 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
     this.vlrLanc = vlrLanc;
   }
 
-  public Long getCnpjNLiqdantDebtd() {
+  public String getCnpjNLiqdantDebtd() {
     return cnpjNLiqdantDebtd;
   }
 
   @JsonProperty("CNPJNLiqdantDebtd")
-  public void setCnpjNLiqdantDebtd(Long cnpjNLiqdantDebtd) {
+  public void setCnpjNLiqdantDebtd(String cnpjNLiqdantDebtd) {
     this.cnpjNLiqdantDebtd = cnpjNLiqdantDebtd;
   }
 
@@ -120,13 +121,13 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
     this.nomCliDebtd = nomCliDebtd;
   }
 
-  public Long getCnpjNCNPJNLiqdantCredtd() {
-    return cnpjNCNPJNLiqdantCredtd;
+  public String getCnpjNLiqdantCredtd() {
+    return cnpjNLiqdantCredtd;
   }
 
   @JsonProperty("CNPJNLiqdantCredtd")
-  public void setCnpjNCNPJNLiqdantCredtd(Long cnpjNCNPJNLiqdantCredtd) {
-    this.cnpjNCNPJNLiqdantCredtd = cnpjNCNPJNLiqdantCredtd;
+  public void setCnpjNLiqdantCredtd(String cnpjNLiqdantCredtd) {
+    this.cnpjNLiqdantCredtd = cnpjNLiqdantCredtd;
   }
 
   public String getNomCliCredtd() {
@@ -159,7 +160,7 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
         vlrLanc.equals(that.vlrLanc) &&
         cnpjNLiqdantDebtd.equals(that.cnpjNLiqdantDebtd) &&
         nomCliDebtd.equals(that.nomCliDebtd) &&
-        cnpjNCNPJNLiqdantCredtd.equals(that.cnpjNCNPJNLiqdantCredtd) &&
+        cnpjNLiqdantCredtd.equals(that.cnpjNLiqdantCredtd) &&
         nomCliCredtd.equals(that.nomCliCredtd) &&
         tpTranscSlc.equals(that.tpTranscSlc);
   }
@@ -168,7 +169,7 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
   public int hashCode() {
     return Objects
         .hash(identdLinhaBilat, tpDebCred, ispbifcCredtd, ispbifDebtd, vlrLanc, cnpjNLiqdantDebtd, nomCliDebtd,
-            cnpjNCNPJNLiqdantCredtd, nomCliCredtd, tpTranscSlc);
+            cnpjNLiqdantCredtd, nomCliCredtd, tpTranscSlc);
   }
 
   @Override
@@ -181,7 +182,7 @@ public class GrupoSlcLiquidProdt extends AbstractModel {
         + ", \"vlrLanc\":\"" + vlrLanc + "\""
         + ", \"cnpjNLiqdantDebtd\":\"" + cnpjNLiqdantDebtd + "\""
         + ", \"nomCliDebtd\":\"" + nomCliDebtd + "\""
-        + ", \"cnpjNCNPJNLiqdantCredtd\":\"" + cnpjNCNPJNLiqdantCredtd + "\""
+        + ", \"cnpjNLiqdantCredtd\":\"" + cnpjNLiqdantCredtd + "\""
         + ", \"nomCliCredtd\":\"" + nomCliCredtd + "\""
         + ", \"tpTranscSlc\":\"" + tpTranscSlc + "\""
         + "}";

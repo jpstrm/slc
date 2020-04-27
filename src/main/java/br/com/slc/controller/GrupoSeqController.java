@@ -1,11 +1,8 @@
 package br.com.slc.controller;
 
 import br.com.slc.controller.swagger.GrupoSeqApi;
-import br.com.slc.controller.swagger.SisMsgApi;
 import br.com.slc.model.GrupoSeq;
-import br.com.slc.model.SisMsg;
 import br.com.slc.service.GrupoSeqService;
-import br.com.slc.service.SisMsgService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +20,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
  * @author João Paulo Santarém
  */
 @RestController
-@RequestMapping(value = "/grupo-secs", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/grupo-sec", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
 public class GrupoSeqController implements GrupoSeqApi {
 
   private Logger logger = LoggerFactory.getLogger(GrupoSeqController.class);
@@ -34,9 +31,9 @@ public class GrupoSeqController implements GrupoSeqApi {
   @Override
   @GetMapping
   public ResponseEntity<List<GrupoSeq>> findAll() {
-    logger.info("GET /grupo-secs");
+    logger.info("GET /grupo-sec");
     final List<GrupoSeq> grupoSeqs = grupoSeqService.findAll();
-    logger.info("GET /grupo-secs - success.");
+    logger.info("GET /grupo-sec - success.");
 
     return ResponseEntity.status(HttpStatus.OK)
         .body(grupoSeqs);

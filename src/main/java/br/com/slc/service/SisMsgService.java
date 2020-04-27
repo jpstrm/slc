@@ -3,6 +3,7 @@ package br.com.slc.service;
 import br.com.slc.model.SisMsg;
 import br.com.slc.repository.SisMsgRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +18,9 @@ public class SisMsgService {
   private SisMsgRepository sisMsgRepository;
 
   public void save(final SisMsg sisMsg) {
-    sisMsgRepository.save(sisMsg);
+    if (!sisMsgRepository.exists(Example.of(sisMsg))) {
+      sisMsgRepository.save(sisMsg);
+    }
   }
 
   public List<SisMsg> findAll() {
