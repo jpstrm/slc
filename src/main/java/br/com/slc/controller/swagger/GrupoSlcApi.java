@@ -1,15 +1,16 @@
 package br.com.slc.controller.swagger;
 
-import br.com.slc.model.GrupoSlcLiquid;
-import br.com.slc.model.GrupoSlcLiquidProdt;
 import br.com.slc.model.GrupoSlcProdt;
+import br.com.slc.response.GrupoSlcLiquidListaResponse;
+import br.com.slc.response.GrupoSlcLiquidProdtListaResponse;
+import br.com.slc.response.GrupoSlcProdtListaResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.ResponseEntity;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -23,21 +24,29 @@ public interface GrupoSlcApi {
       notes = "Operação para listar todos os GrupoSlcLiquids.",
       consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   @ApiResponses({
-      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.")})
-  ResponseEntity<List<GrupoSlcLiquid>> findAllGrupoSlcLiquid();
+      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.", response = GrupoSlcLiquidListaResponse.class)})
+  ResponseEntity<GrupoSlcLiquidListaResponse> findAllGrupoSlcLiquid();
 
   @ApiOperation(value = "Listar GrupoSlcProdts",
       notes = "Operação para listar todos os GrupoSlcProdts.",
       consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   @ApiResponses({
-      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.")})
-  ResponseEntity<List<GrupoSlcProdt>> findAllGrupoSlcProdt();
+      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.", response = GrupoSlcProdtListaResponse.class)})
+  ResponseEntity<GrupoSlcProdtListaResponse> findAllGrupoSlcProdt();
+
+  @ApiOperation(value = "Busca GrupoSlcProdts pelo CodProdt",
+      notes = "Operação encontrar um GrupoSlcProdt pelo CodProdt.",
+      consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.", response = GrupoSlcProdt.class)})
+  ResponseEntity<GrupoSlcProdt> findGrupoSlcProdtByCodProdt(
+      @ApiParam(value = "Cod Prodt") @PathVariable String codProdt);
 
   @ApiOperation(value = "Listar GrupoSlcLiquidProdts",
       notes = "Operação para listar todos os GrupoSlcLiquidProdts.",
       consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   @ApiResponses({
-      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.")})
-  ResponseEntity<List<GrupoSlcLiquidProdt>> findAllGrupoSlcLiquidProdt();
+      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.", response = GrupoSlcLiquidProdtListaResponse.class)})
+  ResponseEntity<GrupoSlcLiquidProdtListaResponse> findAllGrupoSlcLiquidProdt();
 
 }

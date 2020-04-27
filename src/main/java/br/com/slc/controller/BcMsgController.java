@@ -2,6 +2,7 @@ package br.com.slc.controller;
 
 import br.com.slc.controller.swagger.BcMsgApi;
 import br.com.slc.model.BcMsg;
+import br.com.slc.response.BcMsgListaResponse;
 import br.com.slc.service.BcMsgService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,13 +31,13 @@ public class BcMsgController implements BcMsgApi {
 
   @Override
   @GetMapping
-  public ResponseEntity<List<BcMsg>> findAll() {
+  public ResponseEntity<BcMsgListaResponse> findAll() {
     logger.info("GET /bcmsgs");
     final List<BcMsg> bcMsgs = bcMsgService.findAll();
     logger.info("GET /bcmsgs - success.");
 
     return ResponseEntity.status(HttpStatus.OK)
-        .body(bcMsgs);
+        .body(new BcMsgListaResponse(bcMsgs));
   }
 
 }

@@ -2,6 +2,7 @@ package br.com.slc.controller;
 
 import br.com.slc.controller.swagger.GrupoSeqApi;
 import br.com.slc.model.GrupoSeq;
+import br.com.slc.response.GrupoSeqListaResponse;
 import br.com.slc.service.GrupoSeqService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,13 +31,13 @@ public class GrupoSeqController implements GrupoSeqApi {
 
   @Override
   @GetMapping
-  public ResponseEntity<List<GrupoSeq>> findAll() {
+  public ResponseEntity<GrupoSeqListaResponse> findAll() {
     logger.info("GET /grupo-sec");
     final List<GrupoSeq> grupoSeqs = grupoSeqService.findAll();
     logger.info("GET /grupo-sec - success.");
 
     return ResponseEntity.status(HttpStatus.OK)
-        .body(grupoSeqs);
+        .body(new GrupoSeqListaResponse(grupoSeqs));
   }
 
 }

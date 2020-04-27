@@ -1,13 +1,11 @@
 package br.com.slc.controller.swagger;
 
-import br.com.slc.model.GrupoSeq;
+import br.com.slc.response.GrupoSeqListaResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.ResponseEntity;
-
-import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -21,7 +19,7 @@ public interface GrupoSeqApi {
       notes = "Operação para listar todos os GrupoSeqs.",
       consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   @ApiResponses({
-      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.")})
-  ResponseEntity<List<GrupoSeq>> findAll();
+      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.", response = GrupoSeqListaResponse.class)})
+  ResponseEntity<GrupoSeqListaResponse> findAll();
 
 }

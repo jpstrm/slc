@@ -1,5 +1,6 @@
 package br.com.slc.service;
 
+import br.com.slc.exception.NotFoundException;
 import br.com.slc.model.GrupoSlcLiquid;
 import br.com.slc.model.GrupoSlcLiquidProdt;
 import br.com.slc.model.GrupoSlcProdt;
@@ -34,6 +35,11 @@ public class GrupoSlcService {
   public List<GrupoSlcProdt> findAllGrupoSlcProdt() {
 
     return grupoSlcProdtRepository.findAll();
+  }
+
+  public GrupoSlcProdt findAllGrupoSlcProdtByCodProdt(String codProdt) {
+    return grupoSlcProdtRepository.findByCodProdtIgnoreCase(codProdt)
+        .orElseThrow(() -> new NotFoundException("Grupo Slc Prodt não encontrado para o CodProdt: " + codProdt));
   }
 
   public List<GrupoSlcLiquid> findAllGrupoSlcLiquid() {

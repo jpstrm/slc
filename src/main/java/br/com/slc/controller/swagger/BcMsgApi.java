@@ -1,13 +1,11 @@
 package br.com.slc.controller.swagger;
 
-import br.com.slc.model.BcMsg;
+import br.com.slc.response.BcMsgListaResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.ResponseEntity;
-
-import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -21,7 +19,7 @@ public interface BcMsgApi {
       notes = "Operação para listar todas as BcMsgs.",
       consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   @ApiResponses({
-      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.")})
-  ResponseEntity<List<BcMsg>> findAll();
+      @ApiResponse(code = 200, message = "Requisição realizada com sucesso.", response = BcMsgListaResponse.class)})
+  ResponseEntity<BcMsgListaResponse> findAll();
 
 }

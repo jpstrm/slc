@@ -2,6 +2,7 @@ package br.com.slc.controller;
 
 import br.com.slc.controller.swagger.SisMsgApi;
 import br.com.slc.model.SisMsg;
+import br.com.slc.response.SisMsgListaResponse;
 import br.com.slc.service.SisMsgService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,13 +31,13 @@ public class SisMsgController implements SisMsgApi {
 
   @Override
   @GetMapping
-  public ResponseEntity<List<SisMsg>> findAll() {
+  public ResponseEntity<SisMsgListaResponse> findAll() {
     logger.info("GET /sismsgs");
     final List<SisMsg> sisMsgs = sisMsgService.findAll();
     logger.info("GET /sismsgs - success.");
 
     return ResponseEntity.status(HttpStatus.OK)
-        .body(sisMsgs);
+        .body(new SisMsgListaResponse(sisMsgs));
   }
 
 }
